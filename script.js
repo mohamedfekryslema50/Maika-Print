@@ -4,9 +4,9 @@ import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } 
 
 const firebaseConfig = {
   apiKey: "AIzaSyDMCNDytrgWwHc5n4eINVEBJjYCX00QCY",
-  authDomain: "maika-print.firebaseapp.com",
-  projectId: "maika-print",
-  storageBucket: "maika-print.firebasestorage.app",
+  authDomain: "maika-print-39bbb.firebaseapp.com",
+  projectId: "maika-print-39bbb",
+  storageBucket: "maika-print-39bbb.firebasestorage.app",
   messagingSenderId: "555824333502",
   appId: "1:555824333502:web:69a13f4161288b2f2e54ef",
   measurementId: "G-6J7C5PBFMN"
