@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم - MAIKA PRINT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-dashboard-body">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="logo.png" alt="Logo" onerror="this.src='logo.jpg'">
+      <h2>MAIKA PRINT</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="active"><a href="#">الرئيسية</a></li>
+      <li><a href="store.html" target="_blank">عرض المتجر</a></li>
+      <li><a href="#" onclick="logoutAdmin()">تسجيل الخروج</a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-header">
+      <h1>لوحة إدارة المتجر</h1>
+      <span class="user-badge">الأدمن الحالي: Eng / Mohamed Fekry</span>
+    </header>
+
+    <div class="dashboard-grid">
+      <div class="dash-card">
+        <h2>إدارة الأقسام</h2>
+        <div class="add-box">
+          <input type="text" id="newCategoryName" placeholder="اسم القسم الجديد...">
+          <button onclick="addCategory()" class="action-btn">إضافة قسم</button>
+        </div>
+        <h3>الأقسام الحالية:</h3>
+        <ul id="categoriesList" class="data-list"></ul>
+      </div>
+
+      <div class="dash-card">
+        <h2>إضافة منتج جديد</h2>
+        <form id="addProductForm" onsubmit="saveProduct(event)">
+          <div class="form-group" style="margin-bottom: 10px;">
+            <select id="prodCategorySelect" required></select>
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="text" id="prodName" placeholder="اسم المنتج" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="text" id="prodDesc" placeholder="الوصف القصيرة للمنتج" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 10px;">
+            <input type="number" id="prodPrice" placeholder="السعر بالفئة" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 15px;">
+            <label class="file-label">صورة المنتج:</label>
+            <input type="file" id="prodImageFile" accept="image/*" required>
+          </div>
+          <button type="submit" class="action-btn" style="width: 100%;">حفظ المنتج</button>
+        </form>
+      </div>
+
+      <div class="dash-card full-width">
+        <h2>إدارة المنتجات المضافة</h2>
+        <div id="adminProductsList" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;"></div>
+      </div>
+
+      <div class="dash-card full-width">
+        <h2>💾 النسخ الاحتياطي واسترجاع البيانات</h2>
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+          <button onclick="exportData()" class="action-btn">تصدير نسخة احتياطية (JSON)</button>
+          <label class="action-btn" style="cursor: pointer; text-align: center; margin: 0;">
+            استرجاع نسخة احتياطية
+            <input type="file" onchange="importData(event)" accept=".json" style="display: none;">
+          </label>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    checkAdminAuth();
+    renderCategories();
+    loadCategoriesDropdown();
+    renderAdminProducts();
+  </script>
+</body>
+</html>
